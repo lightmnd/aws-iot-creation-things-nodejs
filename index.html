@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MODBUS Codes</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>MODBUS Codes</h1>
+
+    <h2>Tipologia 1: Allarmi</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Codice</th>
+          <th>Descrizione</th>
+          <th>Tipologia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>500</td>
+          <td>allarme generico</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>501</td>
+          <td>allarme sonde macchina</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>502</td>
+          <td>allarmi ingressi</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>503</td>
+          <td>allarmi da logiche</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>504</td>
+          <td>allarmi circuito frigo 1</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>505</td>
+          <td>allarmi circuito frigo 2</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>506</td>
+          <td>allarmi resettabili</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>507</td>
+          <td>allarmi non resettabili</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>550</td>
+          <td>guasto sonda CO2 ambiente</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>551</td>
+          <td>guasto sonda VOC ambiente</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>552</td>
+          <td>guasto sonda temperatura ambiente</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>553</td>
+          <td>guasto sonda temperatura esterna</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>554</td>
+          <td>guasto sonda temperatura acqua</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>555</td>
+          <td>guasto sonda temperatura mandata</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>556</td>
+          <td>guasto sonda temperatura protezione antigelo batt acqua</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>557</td>
+          <td>guasto sonda temperatura sbrinamento recuperatore</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>558</td>
+          <td>guasto sonda umidità ambiente</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>600</td>
+          <td>allarme resistenze elettriche grave</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>601</td>
+          <td>allarme resistenze elettriche lieve</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>602</td>
+          <td>allarme fuga gas</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>603</td>
+          <td>allarme ventilazione</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>604</td>
+          <td>allarme ventilatore ricircolo</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>605</td>
+          <td>allarme ventilatore estrazione</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>606</td>
+          <td>allarme ventilatore condensazione</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>607</td>
+          <td>allame flussostato grave</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>608</td>
+          <td>allarme flussostato lieve</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>609</td>
+          <td>allarme sequenza fasi</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>650</td>
+          <td>segnalazione pulire filtri</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>651</td>
+          <td>segnalazione pulire tubo ionizzatore</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>652</td>
+          <td>segnalazione sostituire tubo ionizzatore</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>653</td>
+          <td>allarme protezione antigelo batteria acqua</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>654</td>
+          <td>allarme protezione batteria acqua lieve</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>655</td>
+          <td>allarme alta temperatura acqua per on compressore</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>656</td>
+          <td>allarme bassa temperatura per on compressore</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>657</td>
+          <td>
+            allarme antigelo batteria acqua kit controllo temperatura mandata
+            grave
+          </td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>658</td>
+          <td>
+            allarme antigelo batteria acqua kit controllo temperatura mandata
+            lieve
+          </td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>659</td>
+          <td>allarme macchina scarica</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>660</td>
+          <td>allarme mancanza comunicazione con display</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>661</td>
+          <td>allarme mancanza comunicazione con ionizzatore</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>662</td>
+          <td>allarme mancanza comunicazione modbus master</td>
+          <td>boolean</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Tipologia A: Variabili binarie - Macchina A</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Codice</th>
+          <th>Descrizione</th>
+          <th>Tipologia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>On / Off</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>On effettivo</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Stagione</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Stagione effettiva</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Abilitazione fasce orarie su display macchina</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Deumidifica attiva</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Richiesta acqua per trattamento aria</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Warning filtri sporchi</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Allarme generico</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Reset allarmi</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Abilitazione deumidifica</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Abilitazione riscaldamento</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>Abilitazione raffreddamento</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>Abilitazione free-cooling\heating</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>Presenza riscaldamento dell’aria</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td>Presenza raffreddamento dell’aria</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td>Presenza recuperatore</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td>Presenza free-cooling\heating</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td>Riscaldamento attivo</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td>Raffreddamento attivo</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td>Ricambio attivo</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td>Free-cooling\heating attivo</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>23</td>
+          <td>Sbrinamento attivo</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>24</td>
+          <td>Abilitazione riduzione ventilazione</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>25</td>
+          <td>Abilitazione umidifica</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>26</td>
+          <td>Sbrinamento recuperatore attivo</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>27</td>
+          <td>Presenza condensatore remoto</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>28</td>
+          <td>Presenza valvola acqua</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>29</td>
+          <td>Presenza valvola acqua on-off</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>30</td>
+          <td>Presenza valvola acqua modulante</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>31</td>
+          <td>Presenza e abilitazione batteria acqua calda</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>32</td>
+          <td>Presenza e abilitazione batteria acqua fredda</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>33</td>
+          <td>Presenza controllo temperatura</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>34</td>
+          <td>On compressore 1</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>35</td>
+          <td>On compressore 2</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>36</td>
+          <td>On ventilatore mandata</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>37</td>
+          <td>On resistenza elettriche</td>
+          <td>boolean</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Tipologia B: Variabili binarie - Macchina B</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Codice</th>
+          <th>Descrizione</th>
+          <th>Tipologia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Unità ON</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Forzatura deumidifica</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Abilitazione forzatura deumidifica [1]</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Forzatura riscaldamento [2]</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Abilitazione forzatura riscaldamento [1]</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Reset allarmi</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Reset pulizia filtri</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Forzatura raffreddamento [2]</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Abilitazione forzatura raffreddamento [1]</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Stato compressore</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Stato valvola acqua</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Stato resistenza elettrica</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>Presenza valvola acqua</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>Presenza resistenza elettrica</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>Presenza allarme</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td>Filtri da pulire</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td>Presenza ventilatori elettronici</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td>Presenza opzione sbrinamento gas caldo</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td>Allarme sonda</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td>Allarme alta pressione</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td>Allarme bassa pressione</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td>Allarme macchina scarica</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>23</td>
+          <td>Allarme bassa temperatura per ON compressore</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>24</td>
+          <td>Allarme sovratemperatura resistenza elettrica</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>25</td>
+          <td>Allarme sovratemperatura resistenza elettrica</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>26</td>
+          <td>Allarme ventilatore</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>27</td>
+          <td>Sbrinamento attivo</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>28</td>
+          <td>Richiesta deumidifica</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>29</td>
+          <td>Richiesta riscaldamento</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>30</td>
+          <td>Richiesta raffreddamento</td>
+          <td>boolean</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Tipologia A: Variabili analogiche - Macchina A</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Codice</th>
+          <th>Descrizione</th>
+          <th>Tipologia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Temperatura esterna</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Temperatura ambiente</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Temperatura mandata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Temperatura ritorno</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Temperatura refrigerante entrata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Temperatura refrigerante uscita</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Temperatura acqua batteria acqua calda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Temperatura acqua batteria acqua fredda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Temperatura acqua batteria acqua precaldata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Temperatura uscita</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Temperatura delta uscita</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Temperatura ingresso serpentina di scarico</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>Temperatura uscita serpentina di scarico</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>Umidità relativa</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>Pressione di mandata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td>Pressione di ritorno</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td>Pressione bassa refrigerante</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td>Pressione alta refrigerante</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td>Pressione caldaia</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td>Pressione batteria acqua</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td>Portata refrigerante</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td>Portata acqua batteria acqua calda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>23</td>
+          <td>Portata acqua batteria acqua fredda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>24</td>
+          <td>Portata acqua batteria acqua precaldata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>25</td>
+          <td>Portata ventilatore mandata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>26</td>
+          <td>Portata ventilatore estrazione</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>27</td>
+          <td>Portata ventilatore recupero</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>28</td>
+          <td>Portata ventilatore in ingresso batteria acqua calda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>29</td>
+          <td>Portata ventilatore in ingresso batteria acqua fredda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>30</td>
+          <td>Portata ventilatore in ingresso batteria acqua precaldata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>31</td>
+          <td>Portata aria esterna</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>32</td>
+          <td>Portata ricircolo</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>33</td>
+          <td>Portata aria estrazione</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>34</td>
+          <td>Portata aria esterna filtrata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>35</td>
+          <td>Portata batteria acqua calda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>36</td>
+          <td>Portata batteria acqua fredda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>37</td>
+          <td>Portata batteria acqua precaldata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>38</td>
+          <td>Portata serpentina di scarico</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>39</td>
+          <td>Portata aria uscita</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>40</td>
+          <td>Portata aria in mandata batteria acqua calda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>41</td>
+          <td>Portata aria in mandata batteria acqua fredda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>42</td>
+          <td>Portata aria in mandata batteria acqua precaldata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>43</td>
+          <td>Pressione portata batteria acqua calda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>44</td>
+          <td>Pressione portata batteria acqua fredda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>45</td>
+          <td>Pressione portata batteria acqua precaldata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>46</td>
+          <td>Pressione ritorno batteria acqua calda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>47</td>
+          <td>Pressione ritorno batteria acqua fredda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>48</td>
+          <td>Pressione ritorno batteria acqua precaldata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>49</td>
+          <td>Pressione alta batteria acqua calda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>50</td>
+          <td>Pressione alta batteria acqua fredda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>51</td>
+          <td>Pressione alta batteria acqua precaldata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>52</td>
+          <td>Pressione bassa batteria acqua calda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>53</td>
+          <td>Pressione bassa batteria acqua fredda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>54</td>
+          <td>Pressione bassa batteria acqua precaldata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>55</td>
+          <td>Pressione bassa refrigerante compressore 1</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>56</td>
+          <td>Pressione alta refrigerante compressore 1</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>57</td>
+          <td>Pressione bassa refrigerante compressore 2</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>58</td>
+          <td>Pressione alta refrigerante compressore 2</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>59</td>
+          <td>Portata acqua caldaia</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>60</td>
+          <td>Pressione acqua caldaia</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>61</td>
+          <td>Temperatura acqua caldaia</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>62</td>
+          <td>Pressione aria esterna</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>63</td>
+          <td>Pressione aria in mandata batteria acqua calda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>64</td>
+          <td>Pressione aria in mandata batteria acqua fredda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>65</td>
+          <td>Pressione aria in mandata batteria acqua precaldata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>66</td>
+          <td>Portata gas</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>67</td>
+          <td>Pressione gas</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>68</td>
+          <td>Temperatura gas</td>
+          <td>float</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Tipologia B: Variabili analogiche - Macchina B</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Codice</th>
+          <th>Descrizione</th>
+          <th>Tipologia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Temperatura mandata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Temperatura acqua mandata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Temperatura ambiente</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Temperatura ritorno</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Temperatura uscita</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Temperatura esterna</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Pressione mandata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Pressione ritorno</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Portata mandata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Portata ritorno</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Portata batteria acqua calda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Portata batteria acqua fredda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>Portata batteria acqua precaldata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>Pressione batteria acqua calda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>Pressione batteria acqua fredda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td>Pressione batteria acqua precaldata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td>Pressione uscita batteria acqua calda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td>Pressione uscita batteria acqua fredda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td>Pressione uscita batteria acqua precaldata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td>Temperatura serpentina uscita</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td>Temperatura serpentina entrata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td>Umidità relativa</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>23</td>
+          <td>Portata aria esterna</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>24</td>
+          <td>Portata batteria acqua calda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>25</td>
+          <td>Portata batteria acqua fredda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>26</td>
+          <td>Portata batteria acqua precaldata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>27</td>
+          <td>Portata serpentina di scarico</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>28</td>
+          <td>Portata ventilatore mandata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>29</td>
+          <td>Portata ventilatore estrazione</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>30</td>
+          <td>Portata ventilatore recupero</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>31</td>
+          <td>Portata ventilatore in ingresso batteria acqua calda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>32</td>
+          <td>Portata ventilatore in ingresso batteria acqua fredda</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>33</td>
+          <td>Portata ventilatore in ingresso batteria acqua precaldata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>34</td>
+          <td>Portata aria esterna filtrata</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>35</td>
+          <td>Portata serpentina di scarico</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>36</td>
+          <td>Portata aria uscita</td>
+          <td>float</td>
+        </tr>
+        <tr>
+          <td>37</td>
+          <td>Portata aria in mandata batteria acqua calda</td>
+          <td>float</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

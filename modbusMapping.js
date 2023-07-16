@@ -1,6 +1,5 @@
 // Modbus mapping
-
-const booleanModbusCodes = [
+const modbusCodes = [
   { code: 500, description: "allarme generico", type: "boolean" },
   { code: 501, description: "allarme sonde macchina", type: "boolean" },
   { code: 502, description: "allarmi ingressi", type: "boolean" },
@@ -120,3 +119,5 @@ const booleanModbusCodes = [
     type: "boolean",
   },
 ];
+
+module.exports = { modbusCodes };
