@@ -1,11 +1,7 @@
 const { fromIni } = require("@aws-sdk/credential-provider-ini");
+const { IoTClient, CreateThingCommand } = require("@aws-sdk/client-iot");
 const {
-  IoTClient,
-  CreateThingCommand,
   GetThingShadowCommand,
-} = require("@aws-sdk/client-iot");
-const {
-  IoTDataPlaneClient,
   UpdateThingShadowCommand,
 } = require("@aws-sdk/client-iot-data-plane");
 const AWSIoT = require("aws-iot-device-sdk");
