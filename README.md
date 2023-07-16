@@ -1,6 +1,6 @@
 # IoT System Documentation
 
-This documentation provides a technical overview of the IoT system built using AWS IoT Core, Golang, and Amazon Elastic Kubernetes Service (EKS). It covers the steps involved in setting up the system, including messaging infrastructure, device code, central control system, and deployment on EKS.
+This documentation provides a technical overview of the IoT system built using AWS IoT Core, NodeJS, and Amazon Elastic Kubernetes Service (EKS). It covers the steps involved in setting up the system, including messaging infrastructure, device code, central control system, and deployment on EKS.
 
 # System Diagram
 
@@ -19,7 +19,7 @@ This documentation provides a technical overview of the IoT system built using A
 
 ## Introduction
 
-The IoT system allows for the integration of 10 devices using AWS IoT Core, Golang, and EKS. It enables communication between devices, a central control system, and users interacting with the system through natural language. The system leverages MQTT as the messaging protocol and EKS for deployment and management.
+The IoT system allows for the integration of 10 devices using AWS IoT Core, NodeJS, and EKS. It enables communication between devices, a central control system, and users interacting with the system through natural language. The system leverages MQTT as the messaging protocol and EKS for deployment and management.
 
 ## Prerequisites
 
@@ -53,7 +53,7 @@ You can see the entire list here: https://lightmnd.github.io/gcp-iot-air-devices
 
 ## Writing Device Code
 
-Each device within the IoT system requires specific device code. The device code, written in Golang, connects to the AWS IoT Core broker and publishes or subscribes to MQTT topics based on its functionality. Implement device-specific logic such as sensor readings, actuator control, or data processing within the code.
+Each device within the IoT system requires specific device code. The device code, written in NodeJS, connects to the AWS IoT Core broker and publishes or subscribes to MQTT topics based on its functionality. Implement device-specific logic such as sensor readings, actuator control, or data processing within the code.
 
 ## Connecting Devices to AWS IoT Core
 
@@ -61,13 +61,33 @@ To connect devices to AWS IoT Core, utilize the AWS IoT Device SDKs available fo
 
 ## Central Control System
 
-The central control system manages the IoT devices and communicates with the devices using MQTT. It is written in Golang and incorporates an MQTT client to subscribe to relevant topics and receive data from the devices. Implement logic within the central control system to process incoming data, perform analytics, and control the devices based on desired actions.
+The central control system manages the IoT devices and communicates with the devices using MQTT. It is written in NodeJS and incorporates an MQTT client to subscribe to relevant topics and receive data from the devices. Implement logic within the central control system to process incoming data, perform analytics, and control the devices based on desired actions.
 
 ## Deploying on EKS using Terraform
 
 Use Terraform to provision the necessary resources on EKS and deploy the IoT system. The provided Terraform template sets up an EKS cluster for deployment. Adjust the template to include the required resources such as AWS IoT Core, device code, and the central control system. Ensure you have the necessary credentials for AWS authentication. Run Terraform commands `init`, `plan`, and `apply` to deploy the system on EKS.
 
 For more details and customization, refer to the code snippets and explanations provided in the respective sections.
+
+## Monitoring
+
+Configure the AWS IoT Rule to send data to Timestream:
+In the AWS IoT Core console, create a rule that captures the MQTT messages published by your devices.
+Configure the rule's action to send the captured data to Amazon Timestream.
+Map the MQTT message fields to the appropriate Timestream table columns.
+
+Set up Grafana:
+Install and configure Grafana on your local machine or a server.
+Add the Timestream data source to Grafana by specifying the Timestream endpoint and authentication details.
+
+In the AWS IoT Core console, create a rule that captures the MQTT messages published by your devices.
+Configure the rule's action to send the captured data to Amazon Timestream.
+Map the MQTT message fields to the appropriate Timestream table columns.
+
+Create a Grafana dashboard:
+Design a dashboard in Grafana to visualize the data from Timestream.
+Configure queries in Grafana to retrieve and display the desired data from Timestream.
+Add visualizations such as graphs, charts, and tables to represent the data.
 
 ---
 
