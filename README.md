@@ -67,8 +67,6 @@ The central control system manages the IoT devices and communicates with the dev
 
 Use Terraform to provision the necessary resources on EKS and deploy the IoT system. The provided Terraform template sets up an EKS cluster for deployment. Adjust the template to include the required resources such as AWS IoT Core, device code, and the central control system. Ensure you have the necessary credentials for AWS authentication. Run Terraform commands `init`, `plan`, and `apply` to deploy the system on EKS.
 
-For more details and customization, refer to the code snippets and explanations provided in the respective sections.
-
 ## Monitoring
 
 Configure the AWS IoT Rule to send data to Timestream:
