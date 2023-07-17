@@ -16,6 +16,7 @@
     "aws-iot-device-sdk": "^2.2.12",
     "aws-sdk": "^2.1413.0",
     "dotenv": "^16.3.1",
+    "path": "^0.12.7",
     "pem": "^1.14.8"
   },
   "devDependencies": {

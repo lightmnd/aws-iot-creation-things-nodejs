@@ -110,11 +110,14 @@ const updatedShadowData = {
 };
 
 devices.forEach(async (device) => {
+  console.log(device.name);
   try {
     const airDev = AWSIoT.device({
-      keyPath: "./certs/private-key.pem",
-      certPath: "./certs/certificate.pem",
-      caPath: "./certs/root-ca.crt",
+      keyPath:
+        "./certs/f0375098846b86f3104110b6e4c8efed24c9beb0c5fc930a094722315eebe1c3-private.pem.key",
+      certPath:
+        "./certs/f0375098846b86f3104110b6e4c8efed24c9beb0c5fc930a094722315eebe1c3-certificate.pem.crt",
+      caPath: "./certs/AmazonRootCA1.pem",
       clientId: device.name,
       host: "a3e72y7msuwdkq-ats.iot.us-east-1.amazonaws.com",
     });
@@ -170,13 +173,14 @@ devices.forEach(async (device) => {
         }
       });
 
-      const updateShadowCommand = new UpdateThingCommand({
+      const updateShadowCommand = new UpdateThingShadowCommand({
         thingName: shadowName,
         payload: JSON.stringify(updatedShadowData),
       });
       iotClient
         .send(updateShadowCommand)
         .then((response) => {
+          console.log("RES:", response);
           updatedShadowData.state.desired[modbus.code] = false;
           console.log(`Updated Thing Shadow for ${shadowName}`);
         })
@@ -191,7 +195,7 @@ devices.forEach(async (device) => {
     airDev.on("error", (error) => {
       console.error(`Error connecting to ${device.name}:`, error);
     });
-    await iotClient.send(updateShadowCommand);
+    // await iotClient.send(updateShadowCommand);
     console.log(`Updated Thing Shadow for ${device.name}`);
   } catch (error) {
     console.error(`Error connecting to ${device.name}:`, error);
