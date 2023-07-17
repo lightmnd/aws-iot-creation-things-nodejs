@@ -70,13 +70,14 @@ const devices = [
   },
 ];
 
+console.log("====>=", process.env.AWS_REGION);
+
 const deviceNumber = devices.length;
 const generateSerialNumber = (index) =>
   `AIR${index.toString().padStart(3, "0")}`;
 
 for (let index = 0; index < deviceNumber; index++) {
   devices[index].serialNumber = generateSerialNumber(index);
-  console.log(devices[index].serialNumber);
 }
 
 const createThings = async (deviceName, serialNumber) => {
@@ -92,9 +93,9 @@ const createThings = async (deviceName, serialNumber) => {
       payload: JSON.stringify({ state: { desired: {} } }),
     });
     await iotClient.send(shadowCommand);
-    console.log(`Created Thing Shadow for ${deviceName}`);
+    // console.log(`Created Thing Shadow for ${deviceName}`);
   } catch (error) {
-    console.error("Error creating device:", error);
+    // console.error("Error creating device:", error);
   }
 };
 
@@ -109,8 +110,7 @@ const updatedShadowData = {
   },
 };
 
-devices.forEach(async (device) => {
-  console.log(device.name);
+devices.forEach(async (device, i = 1) => {
   try {
     const airDev = AWSIoT.device({
       keyPath:
@@ -123,49 +123,48 @@ devices.forEach(async (device) => {
     });
 
     airDev.on("connect", () => {
-      console.log(`Connected to device: ${device.name}`);
+      console.log(`Connected to AWS`);
+      // console.log(`Connected to device: ${device.name}`);
       // Perform actions to control or monitor the device using airDev
       // For example, you can publish messages to control the device or subscribe to topics to receive data from the device.
       // Refer to the AWS IoT Device SDK documentation for more information on publishing and subscribing.
 
       // Get the current Thing Shadow state
-      const shadowName = `device_${device.name}`;
+      const shadowName = `${device.name}`;
       const getShadowCommand = new GetThingShadowCommand({
         thingName: shadowName,
       });
+      console.log(getShadowCommand);
       iotClient
         .send(getShadowCommand)
         .then((response) => {
-          const shadowData = JSON.parse(response.payload.toString());
-          console.log(`Shadow data for ${shadowName}:`, shadowData.state);
+          const payloadString = response.payload.toString();
+          // console.log(`Raw Shadow data for ${shadowName}:`, payloadString);
+          try {
+            const shadowData = JSON.parse(payloadString);
+            // console.log(`Shadow data for ${shadowName}:`, shadowData.state);
+          } catch (error) {
+            // console.error(`Error parsing JSON for ${shadowName}:`, error);
+          }
         })
         .catch((error) => {
-          console.error(
-            `Error retrieving Thing Shadow for ${shadowName}:`,
-            error
-          );
+          // console.error(
+          //   `Error retrieving Thing Shadow for ${shadowName}:`,
+          //   error
+          // );
         });
-
-      // // Example: Update the Thing Shadow state
-      // const updatedShadowData = {
-      //   state: {
-      //     desired: {
-      //       power: true,
-      //     },
-      //   },
-      // };
 
       // Initialize desired state for each MODBUS code
       modbusCodes.forEach((modbus) => {
         switch (modbus.type) {
           case "boolean":
-            updatedShadowData.state.desired[modbus.code] = false;
+            updatedShadowData.state.desired[modbus.code] = true;
             break;
           case "float":
-            updatedShadowData.state.desired[modbus.code] = 0.0;
+            updatedShadowData.state.desired[modbus.code] = 20.0;
             break;
           case "string":
-            updatedShadowData.state.desired[modbus.code] = "";
+            updatedShadowData.state.desired[modbus.code] = "lorem ipsum";
             break;
           default:
             // Type undefined or not supported
@@ -177,26 +176,33 @@ devices.forEach(async (device) => {
         thingName: shadowName,
         payload: JSON.stringify(updatedShadowData),
       });
+
       iotClient
         .send(updateShadowCommand)
         .then((response) => {
-          console.log("RES:", response);
-          updatedShadowData.state.desired[modbus.code] = false;
-          console.log(`Updated Thing Shadow for ${shadowName}`);
+          const parsedResponse = JSON.parse(response?.payload.toString());
+          if (parsedResponse.state && parsedResponse.state.reported) {
+            // Retrieve the updated state from the response
+            const updatedState = parsedResponse.state.reported;
+
+            // Perform any necessary actions with the updated state
+            // console.log(`Updated state for ${shadowName}:`, updatedState);
+          } else {
+            // console.log(`Successfully updated Thing Shadow for ${shadowName}`);
+          }
         })
         .catch((error) => {
-          console.error(
-            `Error updating Thing Shadow for ${shadowName}:`,
-            error
-          );
+          // console.error(
+          //   `Error updating Thing Shadow for ${shadowName}:`,
+          //   error
+          // );
+          // console.log(`Raw response for ${shadowName}:`, error.$response);
         });
     });
 
     airDev.on("error", (error) => {
       console.error(`Error connecting to ${device.name}:`, error);
     });
-    // await iotClient.send(updateShadowCommand);
-    console.log(`Updated Thing Shadow for ${device.name}`);
   } catch (error) {
     console.error(`Error connecting to ${device.name}:`, error);
   }

@@ -87,6 +87,36 @@ Design a dashboard in Grafana to visualize the data from Timestream.
 Configure queries in Grafana to retrieve and display the desired data from Timestream.
 Add visualizations such as graphs, charts, and tables to represent the data.
 
+## Testing
+
+To test the code (for example code 23) in the AWS IoT MQTT test client, follow these steps:
+
+Make sure you have a device connected to AWS IoT Core and that it is configured to publish data on the correct port.
+Open the AWS IoT Core MQTT test client.
+In the "Publish" section of the MQTT test client, set the "Topic" field with the value
+
+```
+device/{device_name}/data
+```
+
+replacing {device_name} with your device name.
+Make sure that the "Payload" field is set as JSON and enter the example data for the "External Air Flow Rate" field:
+
+Example:
+
+```
+{
+  "23": 30.2
+}
+```
+
+This will send a value of 30.2 for the "Outside air flow rate" field to the device.
+Click the "Publish" button to send the message to the device.
+Check on your device that the data has been received correctly and that the "Outdoor Air Flow Rate" field is updated with the value sent.
+This way you can test the receipt of the "Outdoor Air Flow Rate" data on your device using the AWS IoT Core MQTT test client.
+
+Translated with www.DeepL.com/Translator (free version)
+
 ---
 
 This technical documentation provides an overview of the IoT system, including the steps involved and the necessary code snippets. Use this document as a guide to set up and understand the different components of the system. Adjust the code and configurations according to your specific requirements and use cases.

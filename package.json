@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon device-generator.js",
-    "start": "node device-generator.js"
+    "dev": "nodemon iot-devices-connector.js",
+    "start": "node iot-devices-connector.js"
   },
   "author": "",
   "license": "ISC",
