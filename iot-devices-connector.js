@@ -1,76 +1,31 @@
 const { fromIni } = require("@aws-sdk/credential-provider-ini");
-const { IoTClient, CreateThingCommand } = require("@aws-sdk/client-iot");
+const { IoTClient } = require("@aws-sdk/client-iot");
 const {
   GetThingShadowCommand,
   UpdateThingShadowCommand,
 } = require("@aws-sdk/client-iot-data-plane");
 const AWSIoT = require("aws-iot-device-sdk");
 const { modbusCodes } = require("./modbusMapping.js");
+const { createThings } = require("./iot-devices-creation.js");
+const { devices } = require("./devices-list.js");
 
 require("dotenv").config();
 
 const iotClient = new IoTClient({
-  credentials: fromIni({
+  credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  }),
+  },
   region: process.env.AWS_REGION,
 });
 
-const devices = [
-  {
-    name: "device_01",
-    serialNumber: "",
-    // type: "air_dehumidifier",
-  },
-  {
-    name: "device_02",
-    serialNumber: "",
-    // type: "air_dehumidifier",
-  },
-  {
-    name: "device_03",
-    serialNumber: "",
-    // type: "air_dehumidifier",
-  },
-  {
-    name: "device_04",
-    serialNumber: "",
-    // type: "air_dehumidifier",
-  },
-  {
-    name: "device_05",
-    serialNumber: "",
-    // type: "air_dehumidifier",
-  },
-  {
-    name: "device_06",
-    serialNumber: "",
-    // type: "air_dehumidifier",
-  },
-  {
-    name: "device_07",
-    serialNumber: "",
-    // type: "air_dehumidifier",
-  },
-  {
-    name: "device_08",
-    serialNumber: "",
-    // type: "air_dehumidifier",
-  },
-  {
-    name: "device_09",
-    serialNumber: "",
-    // type: "air_dehumidifier",
-  },
-  {
-    name: "device_10",
-    serialNumber: "",
-    // type: "air_dehumidifier",
-  },
-];
-
-console.log("====>=", process.env.AWS_REGION);
+// const iotClient = new IoTClient({
+//   credentials: fromIni({
+//     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+//     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+//   }),
+//   region: process.env.AWS_REGION,
+// });
 
 const deviceNumber = devices.length;
 const generateSerialNumber = (index) =>
@@ -80,29 +35,10 @@ for (let index = 0; index < deviceNumber; index++) {
   devices[index].serialNumber = generateSerialNumber(index);
 }
 
-const createThings = async (deviceName, serialNumber) => {
-  try {
-    const command = new CreateThingCommand({ thingName: deviceName });
-    const result = await iotClient.send(command);
-    console.log(
-      `Created device: ${result.thingName} - Serial no. ${serialNumber} - (${result.thingArn})`
-    );
-
-    const shadowCommand = new UpdateThingShadowCommand({
-      thingName: deviceName,
-      payload: JSON.stringify({ state: { desired: {} } }),
-    });
-    await iotClient.send(shadowCommand);
-    // console.log(`Created Thing Shadow for ${deviceName}`);
-  } catch (error) {
-    // console.error("Error creating device:", error);
-  }
-};
-
 // IMPORTANT: UNCOMMENT IF YOU NEED TO CREATE DEVICES
-// devices.forEach((device) => {
-//   createThings(device.name, device.serialNumber);
-// });
+devices.forEach((device) => {
+  createThings(device.name, device.serialNumber);
+});
 
 const updatedShadowData = {
   state: {
@@ -124,7 +60,6 @@ devices.forEach(async (device, i = 1) => {
 
     airDev.on("connect", () => {
       console.log(`Connected to AWS`);
-      // console.log(`Connected to device: ${device.name}`);
       // Perform actions to control or monitor the device using airDev
       // For example, you can publish messages to control the device or subscribe to topics to receive data from the device.
       // Refer to the AWS IoT Device SDK documentation for more information on publishing and subscribing.
@@ -134,24 +69,25 @@ devices.forEach(async (device, i = 1) => {
       const getShadowCommand = new GetThingShadowCommand({
         thingName: shadowName,
       });
-      console.log(getShadowCommand);
+
       iotClient
         .send(getShadowCommand)
         .then((response) => {
+          console.log("RESPONSE --->", response);
           const payloadString = response.payload.toString();
-          // console.log(`Raw Shadow data for ${shadowName}:`, payloadString);
+          console.log(`Raw Shadow data for ${shadowName}:`, payloadString);
           try {
             const shadowData = JSON.parse(payloadString);
-            // console.log(`Shadow data for ${shadowName}:`, shadowData.state);
+            onsole.log(`Shadow data for ${shadowName}:`, shadowData.state);
           } catch (error) {
-            // console.error(`Error parsing JSON for ${shadowName}:`, error);
+            console.error(`Error parsing JSON for ${shadowName}:`, error);
           }
         })
         .catch((error) => {
-          // console.error(
-          //   `Error retrieving Thing Shadow for ${shadowName}:`,
-          //   error
-          // );
+          console.error(
+            `Error retrieving Thing Shadow for ${shadowName}:`,
+            error
+          );
         });
 
       // Initialize desired state for each MODBUS code

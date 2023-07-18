@@ -16,7 +16,7 @@ This documentation provides a technical overview of the IoT system built using A
 - [Connecting Devices to AWS IoT Core](#connecting-devices-to-aws-iot-core)
 - [Central Control System](#central-control-system)
 - [Deploying on EKS using Terraform](#deploying-on-eks-using-terraform)
-- [Monitoring](#monitorig)
+- [Monitoring](#monitoring)
 - [Testing](#testing)
 
 ## Introduction
@@ -112,7 +112,7 @@ Example:
 }
 ```
 
-This will send a value of 30.2 for the "Outside air flow rate" field to the device.
+This will send a value of 30.2 for the "air flow rate" field to the device.
 Click the "Publish" button to send the message to the device.
 Check on your device that the data has been received correctly and that the "Outdoor Air Flow Rate" field is updated with the value sent.
 This way you can test the receipt of the "Outdoor Air Flow Rate" data on your device using the AWS IoT Core MQTT test client.
