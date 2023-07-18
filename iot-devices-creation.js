@@ -2,6 +2,7 @@ const { IoTClient, CreateThingCommand } = require("@aws-sdk/client-iot");
 const { fromIni } = require("@aws-sdk/credential-provider-ini");
 
 const createThings = async (deviceName, serialNumber) => {
+  console.log(deviceName, serialNumber);
   const iotClient = new IoTClient({
     credentials: fromIni({
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,

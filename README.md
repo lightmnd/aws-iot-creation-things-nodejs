@@ -19,6 +19,28 @@ This documentation provides a technical overview of the IoT system built using A
 - [Monitoring](#monitoring)
 - [Testing](#testing)
 
+## Get Starter
+
+To get the AmazonRootCA1.pem certificate run this following command on your terminal:
+
+```
+curl https://www.amazontrust.com/repository/AmazonRootCA1.pem > root
+```
+
+Install AWS CLI in your project:
+
+```
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+unzip awscli-bundle.zip
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+```
+
+To get the endpoints of your IoT System run this command (make sure you have Python installed):
+
+```
+aws iot describe-endpoint --endpoint-type iot:Data-ATS > endpoint.json
+```
+
 ## Introduction
 
 The IoT system allows for the integration of 10 devices using AWS IoT Core, NodeJS, and EKS. It enables communication between devices, a central control system, and users interacting with the system through natural language. The system leverages MQTT as the messaging protocol and EKS for deployment and management.

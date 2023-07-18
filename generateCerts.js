@@ -16,9 +16,11 @@ const generateCertificates = () => {
 const generatePaths = async () => {
   try {
     const { serviceKey, certificate, ca } = await generateCertificates();
-    const keyPath = "./certs/private-key.pem";
-    const certPath = "./certs/certificate.pem";
-    const caPath = "./certs/root-ca.pem";
+    const keyPath =
+      "./certs/f0375098846b86f3104110b6e4c8efed24c9beb0c5fc930a094722315eebe1c3-private.pem.key";
+    const certPath =
+      "./certs/f0375098846b86f3104110b6e4c8efed24c9beb0c5fc930a094722315eebe1c3-certificate.pem.crt";
+    const caPath = "./certs/AmazonRootCA1.pem";
 
     // Save the private key, certificate, and CA to files
     fs.writeFileSync(keyPath, serviceKey);

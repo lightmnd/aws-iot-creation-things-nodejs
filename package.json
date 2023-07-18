@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon iot-devices-connector.js",
-    "start": "node iot-devices-connector.js"
+    "start": "node iot-devices-connector.js",
+    "generateCert": "node generate-cert.js"
   },
   "author": "",
   "license": "ISC",
