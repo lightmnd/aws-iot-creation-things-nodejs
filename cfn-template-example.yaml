@@ -1,0 +1,46 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Resources:
+  MyLambdaFunction:
+    Type: "AWS::Lambda::Function"
+    Properties:
+      Code:
+        S3Bucket: "<s3-bucket-name>"
+        S3Key: "lambda-code.zip"
+      Handler: index.handler
+      Runtime: nodejs18.x
+      Timeout: 60
+
+  MyIotPolicy:
+    Type: "AWS::IoT::Policy"
+    Properties:
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Action: "iot:*"
+            Resource: "*"
+
+  MyIotThing:
+    Type: "AWS::IoT::Thing"
+    Properties:
+      ThingName: "MyIoTThing"
+
+  MyIotThingPolicyAttachment:
+    Type: "AWS::IoT::PolicyPrincipalAttachment"
+    Properties:
+      PolicyName: !Ref MyIotPolicy
+      Principal: !GetAtt MyLambdaFunction.Role.Arn
+
+  MyIotLambdaPermission:
+    Type: "AWS::Lambda::Permission"
+    Properties:
+      Action: "lambda:InvokeFunction"
+      FunctionName: !Ref MyLambdaFunction
+      Principal: "iot.amazonaws.com"
+
+Outputs:
+  LambdaFunctionName:
+    Value: !Ref MyLambdaFunction
+  IotThingName:
+    Value: !Ref MyIotThing

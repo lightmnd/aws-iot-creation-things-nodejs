@@ -16,8 +16,30 @@ This documentation provides a technical overview of the IoT system built using A
 - [Connecting Devices to AWS IoT Core](#connecting-devices-to-aws-iot-core)
 - [Central Control System](#central-control-system)
 - [Deploying on EKS using Terraform](#deploying-on-eks-using-terraform)
-- [Monitoring](#monitorig)
+- [Monitoring](#monitoring)
 - [Testing](#testing)
+
+## Get Starter
+
+To get the AmazonRootCA1.pem certificate run this following command on your terminal:
+
+```
+curl https://www.amazontrust.com/repository/AmazonRootCA1.pem > root
+```
+
+Install AWS CLI in your project:
+
+```
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+unzip awscli-bundle.zip
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+```
+
+To get the endpoints of your IoT System run this command (make sure you have Python installed):
+
+```
+aws iot describe-endpoint --endpoint-type iot:Data-ATS > endpoint.json
+```
 
 ## Introduction
 
@@ -112,7 +134,7 @@ Example:
 }
 ```
 
-This will send a value of 30.2 for the "Outside air flow rate" field to the device.
+This will send a value of 30.2 for the "air flow rate" field to the device.
 Click the "Publish" button to send the message to the device.
 Check on your device that the data has been received correctly and that the "Outdoor Air Flow Rate" field is updated with the value sent.
 This way you can test the receipt of the "Outdoor Air Flow Rate" data on your device using the AWS IoT Core MQTT test client.
