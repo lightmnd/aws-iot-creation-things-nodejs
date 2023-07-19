@@ -29,10 +29,10 @@ for (let index = 0; index < deviceNumber; index++) {
   devices[index].serialNumber = generateSerialNumber(index);
 }
 
-// IMPORTANT: UNCOMMENT IF YOU NEED TO CREATE DEVICES
-devices.forEach(async (device) => {
-  await createThings(device.name, device.serialNumber);
-});
+// IMPORTANT: UNCOMMENT IF YOU WANT TO CREATE THINGS
+// devices.forEach(async (device) => {
+//   await createThings(device.name, device.serialNumber);
+// });
 
 const updatedShadowData = {
   state: {
@@ -59,25 +59,11 @@ devices.forEach(async (device, i = 1) => {
       // Refer to the AWS IoT Device SDK documentation for more information on publishing and subscribing.
 
       // Get the current Thing Shadow state
-      // try {
+
       const shadowName = `${device.name}`;
       const getShadowCommand = new GetThingShadowCommand({
         thingName: shadowName,
       });
-      console.log(shadowName);
-
-      //   const command = new ListThingsCommand(getShadowCommand);
-      //   const response = await iotClient.send(command);
-
-      //   const things = response.things;
-      //   const endpoints = things.map((thing) => thing.attributes.endpoint);
-      //   console.log(endpoints);
-
-      //   const shadowData = JSON.parse(payloadString);
-      //   createThingsonsole.log(`Shadow data for ${shadowName}:`, shadowData.state);
-      // } catch (error) {
-      //   console.error(`Error parsing JSON for ${shadowName}:`, error);
-      // }
 
       iotClient
         .send(getShadowCommand)
@@ -103,13 +89,13 @@ devices.forEach(async (device, i = 1) => {
       modbusCodes.forEach((modbus) => {
         switch (modbus.type) {
           case "boolean":
-            updatedShadowData.state.desired[modbus.code] = true;
+            updatedShadowData.state.desired[modbus.code] = false;
             break;
           case "float":
-            updatedShadowData.state.desired[modbus.code] = 20.0;
+            updatedShadowData.state.desired[modbus.code] = 0.0;
             break;
           case "string":
-            updatedShadowData.state.desired[modbus.code] = "lorem ipsum";
+            updatedShadowData.state.desired[modbus.code] = "";
             break;
           default:
             // Type undefined or not supported
@@ -129,19 +115,16 @@ devices.forEach(async (device, i = 1) => {
           if (parsedResponse.state && parsedResponse.state.reported) {
             // Retrieve the updated state from the response
             const updatedState = parsedResponse.state.reported;
-
-            // Perform any necessary actions with the updated state
-            // console.log(`Updated state for ${shadowName}:`, updatedState);
+            console.log(`Updated state for ${shadowName}:`, updatedState);
           } else {
-            // console.log(`Successfully updated Thing Shadow for ${shadowName}`);
+            console.log(`Successfully updated Thing Shadow for ${shadowName}`);
           }
         })
         .catch((error) => {
-          // console.error(
-          //   `Error updating Thing Shadow for ${shadowName}:`,
-          //   error
-          // );
-          // console.log(`Raw response for ${shadowName}:`, error.$response);
+          console.error(
+            `Error updating Thing Shadow for ${shadowName}:`,
+            error
+          );
         });
     });
 
