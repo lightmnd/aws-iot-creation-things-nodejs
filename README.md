@@ -101,6 +101,8 @@ Map the MQTT message fields to the appropriate Timestream table columns.
 Set up Grafana:
 Install and configure Grafana on your local machine or a server.
 Add the Timestream data source to Grafana by specifying the Timestream endpoint and authentication details.
+You can also use CloudWatch setting up data ingestion from AWS IoT Core.
+Configure CloudWatch Alarms and Dashboards for real-time monitoring.
 
 In the AWS IoT Core console, create a rule that captures the MQTT messages published by your devices.
 Configure the rule's action to send the captured data to Amazon Timestream.
