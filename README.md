@@ -50,8 +50,8 @@ The IoT system allows for the integration of 10 devices using AWS IoT Core, Node
 Before setting up the IoT system, ensure you have the following prerequisites in place:
 
 - Access to an AWS account
-- AWS CLI installed and configured with appropriate permissions
-- Terraform installed locally
+- AWS CLI installed and configured with appropriate permissions [Click here to install it](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions)
+- Terraform installed locally [Click here to install it](https://developer.hashicorp.com/terraform/downloads?product_intent=terraform)
 
 ## Setting up AWS IoT Core
 
