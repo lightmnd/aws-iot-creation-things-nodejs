@@ -73,7 +73,7 @@ devices.forEach(async (device, i = 1) => {
           console.log(`Raw Shadow data for ${shadowName}:`, payloadString);
           try {
             const shadowData = JSON.parse(payloadString);
-            onsole.log(`Shadow data for ${shadowName}:`, shadowData.state);
+            console.log(`Shadow data for ${shadowName}:`, shadowData.state);
           } catch (error) {
             console.error(`Error parsing JSON for ${shadowName}:`, error);
           }
